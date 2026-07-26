@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brown Sugar Babe â€” Mockup</title>
+<title>Brown Sugar Babe &mdash; Mockup</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -372,8 +372,28 @@
       height:min(58vh, 500px); max-width:62vw;
       transform:translate(-50%, -45%) rotate(-8deg);
     }
-    .p-card{width:82%; min-width:268px;}
-    .p-bottle{height:88%; max-width:78%;}
+    .carousel{gap:14px; scroll-padding-left:0;}
+    .p-card{
+      width:calc((100vw - 54px) / 2);
+      min-width:0;
+      max-width:none;
+    }
+    .p-image{border-radius:12px;}
+    .p-bottle{height:82%; max-width:72%;}
+    .p-badge{font-size:7px; padding:4px 6px; letter-spacing:.1em;}
+    .p-info{padding:10px 2px 16px;}
+    .p-info h3{font-size:13px; line-height:1.18;}
+    .p-info .p-notes{font-size:8.5px; line-height:1.35; margin-top:4px;}
+    .p-info .p-row{gap:8px; margin-top:9px;}
+    .p-info .p-price{font-size:12px;}
+    .p-add{font-size:8px; padding:5px 8px;}
+    .shop-more-card{
+      width:calc((100vw - 54px) / 2);
+      min-width:0;
+      padding:12px 8px;
+    }
+    .shop-more-card span{font-size:13px; line-height:1.25;}
+    .shop-more-card .circle{width:34px; height:34px;}
     section{padding:70px 20px;}
     .collection-photo .label{left:20px; bottom:28px;}
   }
@@ -554,7 +574,7 @@
   <img class="hero-fallback-bottle" alt="Brown Sugar Babe fragrance body oil bottle" data-bottle>
 
   <div class="hero-copy" id="heroCopy">
-    <span class="eyebrow">Fragrance Body Oil Â· Est. Ritual</span>
+    <span class="eyebrow">Fragrance Body Oil &middot; Est. Ritual</span>
     <h1>welcome your new <br>obsession</h1>
     <p>made for skin that wants to be remembered</p>
     <a href="#seasonal" class="hero-cta">Shop the Collection</a>
@@ -576,18 +596,18 @@
         <h2>Featured</h2>
       </div>
       <div class="arrow-controls">
-        <button class="arrow-btn" onclick="scrollCarousel('featured-track',-1)">â†</button>
-        <button class="arrow-btn" onclick="scrollCarousel('featured-track',1)">â†’</button>
+        <button class="arrow-btn" onclick="scrollCarousel('featured-track',-1)">&larr;</button>
+        <button class="arrow-btn" onclick="scrollCarousel('featured-track',1)">&rarr;</button>
       </div>
     </div>
     <div class="carousel-wrap">
       <div class="carousel" id="featured-track">
-        <div class="p-card"><div class="p-image"><span class="p-badge">Bestseller</span><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Caramel Skin</h3><div class="p-notes">Caramel Â· Brown Sugar Â· Musk</div><div class="p-row"><span class="p-price">$36</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Coconut Vanilla Oil</h3><div class="p-notes">Coconut Â· Madagascar Vanilla</div><div class="p-row"><span class="p-price">$34</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Mahogany Oud</h3><div class="p-notes">Oud Â· Mahogany Â· Amber</div><div class="p-row"><span class="p-price">$44</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Peach Cognac</h3><div class="p-notes">Peach Â· Cognac Â· Suede</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Sugared Jasmine</h3><div class="p-notes">Jasmine Â· Brown Sugar Â· Musk</div><div class="p-row"><span class="p-price">$36</span><button class="p-add">Add</button></div></div></div>
-        <div class="shop-more-card"><div class="circle">â†’</div><span>Shop all<br>featured oils</span></div>
+        <div class="p-card"><div class="p-image"><span class="p-badge">Bestseller</span><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Caramel Skin</h3><div class="p-notes">Caramel &middot; Brown Sugar &middot; Musk</div><div class="p-row"><span class="p-price">$36</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Coconut Vanilla Oil</h3><div class="p-notes">Coconut &middot; Madagascar Vanilla</div><div class="p-row"><span class="p-price">$34</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Mahogany Oud</h3><div class="p-notes">Oud &middot; Mahogany &middot; Amber</div><div class="p-row"><span class="p-price">$44</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Peach Cognac</h3><div class="p-notes">Peach &middot; Cognac &middot; Suede</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Sugared Jasmine</h3><div class="p-notes">Jasmine &middot; Brown Sugar &middot; Musk</div><div class="p-row"><span class="p-price">$36</span><button class="p-add">Add</button></div></div></div>
+        <div class="shop-more-card"><div class="circle">&rarr;</div><span>Shop all<br>featured oils</span></div>
       </div>
     </div>
   </section>
@@ -618,21 +638,21 @@
       <div>
         <span class="eyebrow">Limited Run</span>
         <h2>Seasonal</h2>
-        <a href="#" class="section-link">Shop the Collection â†’</a>
+        <a href="#" class="section-link">Shop the Collection &rarr;</a>
       </div>
       <div class="arrow-controls">
-        <button class="arrow-btn" onclick="scrollCarousel('seasonal-track',-1)">â†</button>
-        <button class="arrow-btn" onclick="scrollCarousel('seasonal-track',1)">â†’</button>
+        <button class="arrow-btn" onclick="scrollCarousel('seasonal-track',-1)">&larr;</button>
+        <button class="arrow-btn" onclick="scrollCarousel('seasonal-track',1)">&rarr;</button>
       </div>
     </div>
     <div class="carousel-wrap">
       <div class="carousel" id="seasonal-track">
-        <div class="p-card"><div class="p-image"><span class="p-badge">New</span><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Honey Fig Nightfall</h3><div class="p-notes">Fig Â· Wild Honey Â· Sandalwood</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Cinnamon Amber Glow</h3><div class="p-notes">Cinnamon Bark Â· Amber Â· Tonka</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Spiced Pear Dusk</h3><div class="p-notes">Pear Â· Clove Â· Cedarwood</div><div class="p-row"><span class="p-price">$40</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Warm Cocoa Suede</h3><div class="p-notes">Cocoa Â· Suede Musk Â· Vanilla</div><div class="p-row"><span class="p-price">$40</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Plum Noir</h3><div class="p-notes">Black Plum Â· Patchouli Â· Musk</div><div class="p-row"><span class="p-price">$42</span><button class="p-add">Add</button></div></div></div>
-        <div class="shop-more-card"><div class="circle">â†’</div><span>Shop the<br>full seasonal edit</span></div>
+        <div class="p-card"><div class="p-image"><span class="p-badge">New</span><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Honey Fig Nightfall</h3><div class="p-notes">Fig &middot; Wild Honey &middot; Sandalwood</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Cinnamon Amber Glow</h3><div class="p-notes">Cinnamon Bark &middot; Amber &middot; Tonka</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Spiced Pear Dusk</h3><div class="p-notes">Pear &middot; Clove &middot; Cedarwood</div><div class="p-row"><span class="p-price">$40</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Warm Cocoa Suede</h3><div class="p-notes">Cocoa &middot; Suede Musk &middot; Vanilla</div><div class="p-row"><span class="p-price">$40</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Plum Noir</h3><div class="p-notes">Black Plum &middot; Patchouli &middot; Musk</div><div class="p-row"><span class="p-price">$42</span><button class="p-add">Add</button></div></div></div>
+        <div class="shop-more-card"><div class="circle">&rarr;</div><span>Shop the<br>full seasonal edit</span></div>
       </div>
     </div>
   </section>
@@ -647,11 +667,11 @@
     <div class="section-head">
       <div>
         <span class="eyebrow">Sourced From</span>
-        <h2>Fig Â· Wild Honey Â· Golden Amber</h2>
+        <h2>Fig &middot; Wild Honey &middot; Golden Amber</h2>
       </div>
       <div class="arrow-controls">
-        <button class="arrow-btn" onclick="scrollCarousel('c1-track',-1)">â†</button>
-        <button class="arrow-btn" onclick="scrollCarousel('c1-track',1)">â†’</button>
+        <button class="arrow-btn" onclick="scrollCarousel('c1-track',-1)">&larr;</button>
+        <button class="arrow-btn" onclick="scrollCarousel('c1-track',1)">&rarr;</button>
       </div>
     </div>
     <div class="ingredient-strip">
@@ -662,9 +682,9 @@
     </div>
     <div class="carousel-wrap">
       <div class="carousel" id="c1-track">
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Fig Leaf Amber</h3><div class="p-notes">Fig Leaf Â· Amber Â· Musk</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Honeyed Skin</h3><div class="p-notes">Wild Honey Â· Vanilla Â· Sandalwood</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
-        <div class="shop-more-card"><div class="circle">â†’</div><span>Shop the<br>Amber Fig Line</span></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Fig Leaf Amber</h3><div class="p-notes">Fig Leaf &middot; Amber &middot; Musk</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Honeyed Skin</h3><div class="p-notes">Wild Honey &middot; Vanilla &middot; Sandalwood</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
+        <div class="shop-more-card"><div class="circle">&rarr;</div><span>Shop the<br>Amber Fig Line</span></div>
       </div>
     </div>
   </section>
@@ -679,11 +699,11 @@
     <div class="section-head">
       <div>
         <span class="eyebrow">Sourced From</span>
-        <h2>Blood Orange Â· Brown Sugar Â· Neroli</h2>
+        <h2>Blood Orange &middot; Brown Sugar &middot; Neroli</h2>
       </div>
       <div class="arrow-controls">
-        <button class="arrow-btn" onclick="scrollCarousel('c2-track',-1)">â†</button>
-        <button class="arrow-btn" onclick="scrollCarousel('c2-track',1)">â†’</button>
+        <button class="arrow-btn" onclick="scrollCarousel('c2-track',-1)">&larr;</button>
+        <button class="arrow-btn" onclick="scrollCarousel('c2-track',1)">&rarr;</button>
       </div>
     </div>
     <div class="ingredient-strip">
@@ -694,16 +714,16 @@
     </div>
     <div class="carousel-wrap">
       <div class="carousel" id="c2-track">
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Blood Orange Sugar</h3><div class="p-notes">Blood Orange Â· Sugar Â· Musk</div><div class="p-row"><span class="p-price">$36</span><button class="p-add">Add</button></div></div></div>
-        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Neroli Skin Glaze</h3><div class="p-notes">Neroli Â· Jasmine Â· Amber</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
-        <div class="shop-more-card"><div class="circle">â†’</div><span>Shop the<br>Sugared Citrus Line</span></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Blood Orange Sugar</h3><div class="p-notes">Blood Orange &middot; Sugar &middot; Musk</div><div class="p-row"><span class="p-price">$36</span><button class="p-add">Add</button></div></div></div>
+        <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Neroli Skin Glaze</h3><div class="p-notes">Neroli &middot; Jasmine &middot; Amber</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
+        <div class="shop-more-card"><div class="circle">&rarr;</div><span>Shop the<br>Sugared Citrus Line</span></div>
       </div>
     </div>
   </section>
 
   <footer>
-    <div>Â© brownsugarbabe â€” mockup for internal review</div>
-    <div>Instagram Â· TikTok Â· Pinterest</div>
+    <div>&copy; brownsugarbabe &mdash; mockup for internal review</div>
+    <div>Instagram &middot; TikTok &middot; Pinterest</div>
   </footer>
 
 </div>
@@ -858,7 +878,7 @@
   }
 </script>
 
-<!-- ===== 3D BOTTLE SCENE (module) â€” driven by page scroll ===== -->
+<!-- ===== 3D BOTTLE SCENE (module) &mdash; driven by page scroll ===== -->
 <script type="importmap">
 {
   "imports": {
