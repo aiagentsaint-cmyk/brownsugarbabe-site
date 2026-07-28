@@ -270,8 +270,8 @@
     display:flex; align-items:flex-end; justify-content:space-between;
     max-width:1400px; margin:0 auto 44px; flex-wrap:wrap; gap:16px;
   }
-  .section-head h2{font-size:clamp(30px,4vw,48px); color:#170D08;}
-  .section-head .eyebrow{margin-bottom:10px; display:block; color:#170D08;}
+  .section-head h2{font-size:clamp(30px,4vw,48px); color:var(--gold-light);}
+  .section-head .eyebrow{margin-bottom:10px; display:block; color:var(--gold-light);}
   .arrow-controls{display:flex; gap:10px;}
   .arrow-btn{
     width:44px; height:44px; border-radius:50%;
@@ -467,6 +467,18 @@
     background:rgba(255,255,255,.45);
     border-color:rgba(23,13,8,.28);
   }
+  body.theme-cream .section-head h2,
+  body.theme-white .section-head h2,
+  body.theme-cream .section-head .eyebrow,
+  body.theme-white .section-head .eyebrow,
+  body.theme-cream .section-link,
+  body.theme-white .section-link{
+    color:#170D08;
+  }
+  body.theme-cream .section-link,
+  body.theme-white .section-link{
+    border-bottom-color:#170D08;
+  }
   body.theme-cream #after-hero,
   body.theme-white #after-hero,
   body.theme-cream section,
@@ -652,10 +664,10 @@
   /* ===== MISSION BANNER ===== */
   .section-link{
     display:inline-block; margin-top:14px; font-size:12px; letter-spacing:.14em; text-transform:uppercase;
-    color:#170D08; border-bottom:1px solid #170D08; padding-bottom:3px;
+    color:var(--gold-light); border-bottom:1px solid var(--gold-deep); padding-bottom:3px;
     transition:color .25s, border-color .25s;
   }
-  .section-link:hover{ color:#170D08; border-color:#170D08; opacity:.72; }
+  .section-link:hover{ color:var(--cream); border-color:var(--gold-light); opacity:.72; }
   .mission-banner{
     position:relative; padding:0; margin:0; max-width:none;
     min-height:60vh; display:flex; align-items:center; justify-content:center;
@@ -826,12 +838,6 @@
         <button class="arrow-btn" onclick="scrollCarousel('c1-track',1)">&rarr;</button>
       </div>
     </div>
-    <div class="ingredient-strip">
-      <div class="ing-pill"><span class="dot"></span>Black Mission Fig</div>
-      <div class="ing-pill"><span class="dot"></span>Raw Wild Honey</div>
-      <div class="ing-pill"><span class="dot"></span>Golden Amber Resin</div>
-      <div class="ing-pill"><span class="dot"></span>Sweet Almond Oil Base</div>
-    </div>
     <div class="carousel-wrap">
       <div class="carousel" id="c1-track">
         <div class="p-card"><div class="p-image"><img class="p-bottle" alt="Brown Sugar Babe French Kiss fragrance body oil" data-bottle></div><div class="p-info"><h3>Fig Leaf Amber</h3><div class="p-notes">Fig Leaf &middot; Amber &middot; Musk</div><div class="p-row"><span class="p-price">$38</span><button class="p-add">Add</button></div></div></div>
@@ -857,12 +863,6 @@
         <button class="arrow-btn" onclick="scrollCarousel('c2-track',-1)">&larr;</button>
         <button class="arrow-btn" onclick="scrollCarousel('c2-track',1)">&rarr;</button>
       </div>
-    </div>
-    <div class="ingredient-strip">
-      <div class="ing-pill"><span class="dot"></span>Blood Orange Peel</div>
-      <div class="ing-pill"><span class="dot"></span>Raw Brown Sugar</div>
-      <div class="ing-pill"><span class="dot"></span>Neroli Blossom</div>
-      <div class="ing-pill"><span class="dot"></span>Jojoba Oil Base</div>
     </div>
     <div class="carousel-wrap">
       <div class="carousel" id="c2-track">
