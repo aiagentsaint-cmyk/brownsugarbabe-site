@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>French Kiss &mdash; Brown Sugar Babe</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-deep:#8C6B3E;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2);--ease:cubic-bezier(.22,.61,.36,1)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Sora',sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;overflow-x:hidden}
+  body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(227,200,143,.18),transparent 44%),linear-gradient(180deg,rgba(23,13,8,.42),rgba(23,13,8,.92)),url('assets/french-kiss-banner.jpg') center/cover;opacity:.92}
+  h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:500}
+  a{color:inherit;text-decoration:none}
+  button,input{font-family:inherit}
+  .topbar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:24px 38px;background:rgba(23,13,8,.62);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .logo{font-family:'Fraunces',serif;font-style:italic;font-size:22px}.logo b{font-style:normal;color:var(--gold-light)}
+  .back{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light)}
+  .page-shell{position:relative;z-index:1;padding:122px 38px 76px;transition:filter .6s var(--ease),transform .6s var(--ease)}
+  body.locked .page-shell{filter:blur(10px);transform:scale(1.01);pointer-events:none;user-select:none}
+  .product-grid{display:grid;grid-template-columns:minmax(300px,1.05fr) minmax(320px,.82fr);gap:50px;align-items:start;max-width:1240px;margin:0 auto}
+  .media-column{min-width:0}
+  .media-stage{position:relative;min-height:610px;border:1px solid var(--line);background:radial-gradient(circle at 50% 42%,rgba(227,200,143,.2),transparent 58%),rgba(23,13,8,.42);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .media-stage::before,.media-stage::after{content:"";position:absolute;left:50%;width:76%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-light),transparent);transform:translateX(-50%)}
+  .media-stage::before{top:34px}.media-stage::after{bottom:34px}
+  .hero-product-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.02) contrast(1.04)}
+  .hero-product-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:#000}
+  .media-stage.show-video .hero-product-photo{display:none}
+  .media-stage.show-video .hero-product-video{display:block}
+  .media-badge{position:absolute;top:24px;left:24px;z-index:2;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(23,13,8,.58);color:var(--gold-light);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+  .gallery-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px}
+  .gallery-card{position:relative;aspect-ratio:1/1;border:1px solid var(--line);background:rgba(23,13,8,.4);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--gold-light);text-align:center}
+  .gallery-button{width:100%;border:0;padding:0;cursor:pointer;color:inherit;background:transparent}
+  .gallery-button.active .gallery-card{border-color:var(--gold-light);box-shadow:0 0 0 1px rgba(227,200,143,.38),0 0 28px rgba(227,200,143,.16)}
+  .gallery-card img{width:100%;height:100%;object-fit:cover}
+  .gallery-card video{width:100%;height:100%;object-fit:cover}
+  .gallery-card.video::before{content:"";position:absolute;z-index:2;width:54px;height:54px;border-radius:50%;border:1px solid var(--gold-light);background:rgba(23,13,8,.46);pointer-events:none}
+  .gallery-card.video::after{content:"";position:absolute;z-index:3;border-left:15px solid var(--gold-light);border-top:10px solid transparent;border-bottom:10px solid transparent;transform:translateX(3px);pointer-events:none}
+  .gallery-label{position:absolute;left:12px;right:12px;bottom:12px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+  .details{position:sticky;top:98px;padding:34px;border:1px solid var(--line);background:linear-gradient(180deg,rgba(227,200,143,.08),rgba(23,13,8,.42));box-shadow:0 32px 70px rgba(0,0,0,.28)}
+  .badge{display:inline-block;margin-bottom:16px;padding:8px 13px;border:1px solid var(--line);border-radius:999px;color:var(--gold-light);font-size:10px;letter-spacing:.2em;text-transform:uppercase;background:rgba(23,13,8,.4)}
+  .details h1{font-size:clamp(44px,5vw,72px);line-height:.94;color:var(--gold-light)}
+  .reserve{display:block;margin:10px 0 16px;font-family:'Fraunces',serif;font-style:italic;font-size:clamp(24px,3vw,36px);color:var(--cream)}
+  .sub{margin:16px 0 22px;color:rgba(244,235,221,.72);line-height:1.7;font-size:14px}
+  .price{font-family:'Fraunces',serif;font-size:31px;color:var(--gold-light);margin-bottom:22px}
+  .sizes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 24px}.sizes button{padding:12px 13px;border:1px solid var(--line);background:rgba(23,13,8,.35);color:var(--cream);border-radius:999px;font-size:12px}
+  .cart{position:relative;width:100%;padding:17px 22px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));color:#170D08;font-weight:600;letter-spacing:.14em;text-transform:uppercase;overflow:hidden;isolation:isolate}
+  .cart::before{content:"";position:absolute;inset:-2px;border-radius:inherit;padding:2px;background:conic-gradient(from var(--spin,0deg),transparent 0 64deg,rgba(255,255,255,.96) 82deg,transparent 108deg 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:ring-spin 3.2s linear infinite}
+  .cart::after{content:"";position:absolute;inset:3px;border-radius:inherit;box-shadow:0 0 18px rgba(255,255,255,.38);opacity:.76;pointer-events:none}
+  @property --spin{syntax:"<angle>";inherits:false;initial-value:0deg}
+  @keyframes ring-spin{to{--spin:360deg}}
+  .perks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:24px 0 0}.perk{padding:13px 9px;border:1px solid var(--line);text-align:center;color:var(--gold-light);font-size:10px;letter-spacing:.1em;text-transform:uppercase}
+  .content-section{max-width:1240px;margin:72px auto 0;padding:42px 0;border-top:1px solid var(--line)}
+  .section-kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light)}
+  .split{display:grid;grid-template-columns:.8fr 1.2fr;gap:46px;align-items:start}
+  .section-title{font-size:clamp(34px,4vw,58px);color:var(--gold-light);line-height:1;margin-top:12px}
+  .copy p{color:rgba(244,235,221,.72);font-size:14px;line-height:1.8;margin-bottom:16px}
+  .accordions{display:grid;gap:10px;margin-top:22px}
+  details{border:1px solid var(--line);background:rgba(23,13,8,.34);padding:18px 20px}
+  summary{cursor:pointer;color:var(--gold-light);font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+  details p{margin-top:14px;color:rgba(244,235,221,.72);line-height:1.7;font-size:13px}
+  .pyramid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+  .note-card{border:1px solid var(--line);background:rgba(23,13,8,.36);min-height:390px;display:flex;flex-direction:column}
+  .note-image{height:230px;background:radial-gradient(circle at 50% 44%,rgba(227,200,143,.22),transparent 62%),linear-gradient(135deg,rgba(51,31,22,.92),rgba(23,13,8,.92));display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .note-image img{width:100%;height:100%;object-fit:cover;filter:saturate(1.04) contrast(1.03)}
+  .note-body{padding:22px}.note-body h3{color:var(--gold-light);font-size:26px;margin:8px 0}.note-body p{color:rgba(244,235,221,.72);font-size:13px;line-height:1.65}
+  .reviews{display:grid;grid-template-columns:.7fr 1.3fr;gap:42px;align-items:start}
+  .rating{font-family:'Fraunces',serif;color:var(--gold-light);font-size:70px;line-height:1}.stars{color:var(--gold-light);letter-spacing:.16em;margin:12px 0}
+  .review-card{border:1px solid var(--line);background:rgba(23,13,8,.36);padding:30px}.review-card blockquote{font-family:'Fraunces',serif;font-size:28px;line-height:1.28;color:var(--cream)}.review-card cite{display:block;margin-top:18px;color:var(--gold-light);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-style:normal}
+  .lock-overlay{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(15,9,6,.62);backdrop-filter:blur(4px);transition:opacity .55s var(--ease),visibility .55s var(--ease)}
+  body.unlocked .lock-overlay{opacity:0;visibility:hidden;pointer-events:none}
+  .lock-card{width:min(430px,100%);text-align:center;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(227,200,143,.13),rgba(42,25,18,.96) 62%);padding:42px 30px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
+  .lock-icon{width:82px;height:66px;margin:0 auto 24px;border:2px solid var(--gold-light);border-radius:16px;position:relative;transition:transform .65s var(--ease)}.lock-icon::before{content:"";position:absolute;left:18px;right:18px;top:-34px;height:42px;border:2px solid var(--gold-light);border-bottom:0;border-radius:34px 34px 0 0;transform-origin:left bottom;transition:transform .65s var(--ease)}body.unlocking .lock-icon::before{transform:rotate(-28deg)}body.unlocking .lock-icon{transform:translateY(-4px)}
+  .lock-card h2{font-size:34px;color:var(--gold-light);margin-bottom:12px}.lock-card p{color:rgba(244,235,221,.72);line-height:1.6;margin-bottom:20px;font-size:13px}
+  .code-form{display:flex;gap:8px}.code-form input{flex:1;padding:14px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(23,13,8,.66);color:var(--cream);text-align:center;letter-spacing:.18em}.code-form button{padding:14px 20px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));color:#170D08;font-weight:600;text-transform:uppercase;letter-spacing:.12em}.error{min-height:18px;margin-top:12px;color:#f1b7a8;font-size:12px}
+  @media(max-width:900px){.topbar{padding:18px 20px}.page-shell{padding:94px 20px 54px}.product-grid{grid-template-columns:1fr;gap:22px}.media-column{display:flex;gap:12px;align-items:stretch;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px}.media-stage{min-width:82vw;min-height:520px;scroll-snap-align:start}.gallery-strip{display:flex;gap:12px;margin-top:0}.gallery-card{min-width:42vw;height:auto;scroll-snap-align:start}.details{position:relative;top:0;padding:26px}.split,.reviews,.pyramid{grid-template-columns:1fr}.sizes,.perks{grid-template-columns:1fr}.content-section{margin-top:46px}.note-card{min-height:0}}
+</style>
+</head>
+<body class="locked">
+<nav class="topbar"><a class="logo" href="index.html">brown<b>sugar</b>babe</a><a class="back" href="index.html">Back to shop</a></nav>
+<main class="page-shell">
+  <section class="product-grid">
+    <div class="media-column" aria-label="French Kiss media gallery">
+      <div class="media-stage" aria-label="French Kiss product image">
+        <span class="media-badge">Priv&eacute; Reserve</span>
+        <img class="hero-product-photo" id="heroProductPhoto" src="assets/french-kiss-product-01.png" alt="Brown Sugar Babe French Kiss bottle on red satin">
+        <video class="hero-product-video" id="heroProductVideo" src="assets/french-kiss-video-01.mp4" controls muted playsinline preload="metadata"></video>
+      </div>
+      <div class="gallery-strip">
+        <button class="gallery-button active" type="button" data-media-type="image" data-media-src="assets/french-kiss-product-01.png" data-media-alt="Brown Sugar Babe French Kiss bottle on red satin"><div class="gallery-card"><img src="assets/french-kiss-product-01.png" alt="French Kiss bottle on red satin"><span class="gallery-label">Satin</span></div></button>
+        <button class="gallery-button" type="button" data-media-type="image" data-media-src="assets/french-kiss-product-02.png" data-media-alt="French Kiss bottle with red flowers and teacup"><div class="gallery-card"><img src="assets/french-kiss-product-02.png" alt="French Kiss bottle with red flowers and teacup"><span class="gallery-label">Ritual</span></div></button>
+        <button class="gallery-button" type="button" data-media-type="image" data-media-src="assets/french-kiss-product-03.png" data-media-alt="French Kiss bottle in amber light"><div class="gallery-card"><img src="assets/french-kiss-product-03.png" alt="French Kiss bottle in amber light"><span class="gallery-label">Glow</span></div></button>
+        <button class="gallery-button" type="button" data-media-type="image" data-media-src="assets/french-kiss-product-04.png" data-media-alt="French Kiss bottle held in ornate mirror"><div class="gallery-card"><img src="assets/french-kiss-product-04.png" alt="French Kiss bottle held in ornate mirror"><span class="gallery-label">Mirror</span></div></button>
+        <button class="gallery-button" type="button" data-media-type="video" data-media-src="assets/french-kiss-video-01.mp4"><div class="gallery-card video" aria-label="French Kiss product video">
+          <video src="assets/french-kiss-video-01.mp4" muted playsinline preload="metadata"></video>
+          <span class="gallery-label">Video</span>
+        </div></button>
+      </div>
+    </div>
+    <aside class="details">
+      <span class="badge">Exclusive Product &middot; The Priv&eacute; Collection</span>
+      <h1>French Kiss</h1>
+      <span class="reserve">Priv&eacute; Reserve</span>
+      <p class="sub">Inspired by Lost in Paris, this private-release nourishing body oil opens bright, turns decadent, and dries down warm, resinous, and magnetic.</p>
+      <div class="price">$110.00</div>
+      <span class="badge">Max 1 unit per order</span>
+      <div class="sizes" aria-label="Size choices"><button>4oz Glass</button><button>4oz Plastic</button><button>2oz Plastic</button><button>10 ml Sample</button></div>
+      <button class="cart">Add to cart &mdash; $110.00</button>
+      <div class="perks"><div class="perk">Phthalates Free</div><div class="perk">Paraben Free</div><div class="perk">Made in USA</div></div>
+    </aside>
+  </section>
+
+  <section class="content-section split">
+    <div>
+      <span class="section-kicker">Description</span>
+      <h2 class="section-title">A private trail for skin that wants to be remembered.</h2>
+    </div>
+    <div class="copy">
+      <p>French Kiss is inspired by Lost in Paris: flirtatious citrus, warm sugar, aged rum, and ambered woods layered into a rich body oil ritual.</p>
+      <p>The formula is built with organic carrier oils that condition and nourish skin, balancing moisture while leaving a soft, supple glow.</p>
+      <div class="accordions">
+        <details open><summary>Ingredients</summary><p>Avocado Oil, Castor Oil, Grapeseed Oil, Olive Oil, Sweet Almond Oil, and Parfum/Fragrance Oil.</p></details>
+        <details><summary>How to use</summary><p>Apply after showering or bathing to lock in moisture. Focus on pulse points including behind the ears, neck, collarbone, inside elbows, ankles, and behind the knees.</p></details>
+        <details><summary>Shipping and returns</summary><p>Please allow 7-10 business days for order processing. Flat-rate shipping applies to most orders, and failed delivery returns may require reshipment charges.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <span class="section-kicker">Olfactory Pyramid</span>
+    <h2 class="section-title">Discover the allure of French Kiss</h2>
+    <div class="pyramid">
+      <div class="note-card"><div class="note-image"><img src="assets/french-kiss-note-top.png" alt="French Kiss top note visual"></div><div class="note-body"><span class="section-kicker">Top Notes</span><h3>The First Spark</h3><p>Blood Orange and Bitter Orange create a bright, flirtatious burst inspired by Paris under the lights.</p></div></div>
+      <div class="note-card"><div class="note-image"><img src="assets/french-kiss-note-heart.png" alt="French Kiss heart note visual"></div><div class="note-body"><span class="section-kicker">Heart Notes</span><h3>The Sweet Temptation</h3><p>Aged Rum, Caramel, Butterscotch, Melted Brown Sugar, Cinnamon, and Clove create an intimate, indulgent center.</p></div></div>
+      <div class="note-card"><div class="note-image"><img src="assets/french-kiss-note-base.png" alt="French Kiss base note visual"></div><div class="note-body"><span class="section-kicker">Base Notes</span><h3>The Lingering Embrace</h3><p>Vanilla Bean, Benzoin, Warm Amber, Patchouli, and Sandalwood leave a deep trail that clings to skin.</p></div></div>
+    </div>
+  </section>
+
+  <section class="content-section reviews">
+    <div>
+      <span class="section-kicker">Client Reviews</span>
+      <div class="rating">5.0</div>
+      <div class="stars">★★★★★</div>
+      <p class="sub">5 private client reviews</p>
+    </div>
+    <div class="review-card">
+      <blockquote>&ldquo;It smells like a beautiful sunrise on the beach. So fresh and clean it doesn&rsquo;t have to be mixed with anything.&rdquo;</blockquote>
+      <cite>Bree &middot; Verified Private Client</cite>
+    </div>
+  </section>
+</main>
+<div class="lock-overlay" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
+  <div class="lock-card">
+    <div class="lock-icon" aria-hidden="true"></div>
+    <span class="badge">Private Access</span>
+    <h2 id="lockTitle">Exclusive listing locked</h2>
+    <p>This is an exclusive Brown Sugar Babe product. Enter your access code to view the French Kiss Priv&eacute; Reserve listing.</p>
+    <form class="code-form" id="codeForm"><input id="codeInput" inputmode="numeric" autocomplete="off" placeholder="Access code" aria-label="Access code"><button>Unlock</button></form>
+    <div class="error" id="codeError" aria-live="polite"></div>
+  </div>
+</div>
+<script>
+  const form = document.getElementById('codeForm');
+  const input = document.getElementById('codeInput');
+  const error = document.getElementById('codeError');
+  const mediaStage = document.querySelector('.media-stage');
+  const heroPhoto = document.getElementById('heroProductPhoto');
+  const heroVideo = document.getElementById('heroProductVideo');
+  const galleryButtons = document.querySelectorAll('.gallery-button');
+  galleryButtons.forEach(function(button){
+    button.addEventListener('click', function(){
+      galleryButtons.forEach(function(item){ item.classList.remove('active'); });
+      button.classList.add('active');
+      if(button.dataset.mediaType === 'video'){
+        mediaStage.classList.add('show-video');
+        if(heroVideo.src.indexOf(button.dataset.mediaSrc) === -1) heroVideo.src = button.dataset.mediaSrc;
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(function(){});
+      }else{
+        heroVideo.pause();
+        mediaStage.classList.remove('show-video');
+        heroPhoto.src = button.dataset.mediaSrc;
+        heroPhoto.alt = button.dataset.mediaAlt || 'French Kiss product image';
+      }
+    });
+  });
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    if(input.value.trim() === '1111'){
+      document.body.classList.add('unlocking');
+      setTimeout(function(){
+        document.body.classList.remove('locked');
+        document.body.classList.add('unlocked');
+      }, 650);
+    }else{
+      error.textContent = 'That code is not active yet.';
+      input.select();
+    }
+  });
+  input.focus();
+</script>
+</body>
+</html>
