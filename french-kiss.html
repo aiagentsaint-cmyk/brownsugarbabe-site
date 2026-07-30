@@ -9,6 +9,8 @@
 <style>
   :root{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-deep:#8C6B3E;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2);--ease:cubic-bezier(.22,.61,.36,1)}
   *{box-sizing:border-box;margin:0;padding:0}
+  *{scrollbar-width:none;-ms-overflow-style:none}
+  *::-webkit-scrollbar{width:0;height:0;display:none}
   html{scroll-behavior:smooth}
   body{font-family:'Sora',sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;overflow-x:hidden}
   body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(227,200,143,.18),transparent 44%),linear-gradient(180deg,rgba(23,13,8,.42),rgba(23,13,8,.92)),url('assets/french-kiss-banner.jpg') center/cover;opacity:.92}
@@ -29,6 +31,10 @@
   .hero-product-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:#000}
   .media-stage.show-video .hero-product-photo{display:none}
   .media-stage.show-video .hero-product-video{display:block}
+  .media-arrow{position:absolute;top:50%;z-index:5;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:rgba(23,13,8,.58);color:var(--gold-light);display:flex;align-items:center;justify-content:center;font-size:22px;transform:translateY(-50%);backdrop-filter:blur(8px);transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+  .media-arrow:hover{background:var(--gold-light);color:var(--deep);border-color:var(--gold-light)}
+  .media-arrow.prev{left:20px}
+  .media-arrow.next{right:20px}
   .media-badge{position:absolute;top:24px;left:24px;z-index:2;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:rgba(23,13,8,.58);color:var(--gold-light);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
   .gallery-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:12px}
   .gallery-card{position:relative;aspect-ratio:1/1;border:1px solid var(--line);background:rgba(23,13,8,.4);overflow:hidden;display:flex;align-items:center;justify-content:center;color:var(--gold-light);text-align:center}
@@ -87,6 +93,8 @@
         <span class="media-badge">Priv&eacute; Reserve</span>
         <img class="hero-product-photo" id="heroProductPhoto" src="assets/french-kiss-product-01.png" alt="Brown Sugar Babe French Kiss bottle on red satin">
         <video class="hero-product-video" id="heroProductVideo" src="assets/french-kiss-video-01.mp4" controls muted playsinline preload="metadata"></video>
+        <button class="media-arrow prev" type="button" aria-label="Previous French Kiss media">&lsaquo;</button>
+        <button class="media-arrow next" type="button" aria-label="Next French Kiss media">&rsaquo;</button>
       </div>
       <div class="gallery-strip">
         <button class="gallery-button active" type="button" data-media-type="image" data-media-src="assets/french-kiss-product-01.png" data-media-alt="Brown Sugar Babe French Kiss bottle on red satin"><div class="gallery-card"><img src="assets/french-kiss-product-01.png" alt="French Kiss bottle on red satin"><span class="gallery-label">Satin</span></div></button>
@@ -169,23 +177,34 @@
   const heroPhoto = document.getElementById('heroProductPhoto');
   const heroVideo = document.getElementById('heroProductVideo');
   const galleryButtons = document.querySelectorAll('.gallery-button');
+  const prevMedia = document.querySelector('.media-arrow.prev');
+  const nextMedia = document.querySelector('.media-arrow.next');
+  let activeMediaIndex = 0;
+  function selectMedia(index){
+    if(!galleryButtons.length) return;
+    activeMediaIndex = (index + galleryButtons.length) % galleryButtons.length;
+    const button = galleryButtons[activeMediaIndex];
+    galleryButtons.forEach(function(item){ item.classList.remove('active'); });
+    button.classList.add('active');
+    if(button.dataset.mediaType === 'video'){
+      mediaStage.classList.add('show-video');
+      if(heroVideo.src.indexOf(button.dataset.mediaSrc) === -1) heroVideo.src = button.dataset.mediaSrc;
+      heroVideo.currentTime = 0;
+      heroVideo.play().catch(function(){});
+    }else{
+      heroVideo.pause();
+      mediaStage.classList.remove('show-video');
+      heroPhoto.src = button.dataset.mediaSrc;
+      heroPhoto.alt = button.dataset.mediaAlt || 'French Kiss product image';
+    }
+  }
   galleryButtons.forEach(function(button){
     button.addEventListener('click', function(){
-      galleryButtons.forEach(function(item){ item.classList.remove('active'); });
-      button.classList.add('active');
-      if(button.dataset.mediaType === 'video'){
-        mediaStage.classList.add('show-video');
-        if(heroVideo.src.indexOf(button.dataset.mediaSrc) === -1) heroVideo.src = button.dataset.mediaSrc;
-        heroVideo.currentTime = 0;
-        heroVideo.play().catch(function(){});
-      }else{
-        heroVideo.pause();
-        mediaStage.classList.remove('show-video');
-        heroPhoto.src = button.dataset.mediaSrc;
-        heroPhoto.alt = button.dataset.mediaAlt || 'French Kiss product image';
-      }
+      selectMedia(Array.prototype.indexOf.call(galleryButtons, button));
     });
   });
+  if(prevMedia) prevMedia.addEventListener('click', function(){ selectMedia(activeMediaIndex - 1); });
+  if(nextMedia) nextMedia.addEventListener('click', function(){ selectMedia(activeMediaIndex + 1); });
   form.addEventListener('submit', function(event){
     event.preventDefault();
     if(input.value.trim() === '1111'){

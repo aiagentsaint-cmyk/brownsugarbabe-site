@@ -17,9 +17,7 @@
   main{padding:62px 38px 70px}
   .grid{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:minmax(280px,520px) minmax(300px,520px);gap:56px;align-items:center}
   .image{position:relative;min-height:560px;border-radius:18px;background:radial-gradient(circle at 50% 45%,rgba(240,215,160,.56),rgba(184,147,91,.12) 50%,transparent 70%);display:flex;align-items:center;justify-content:center}
-  .bottle{width:170px;height:420px;border-radius:42px 42px 28px 28px;background:linear-gradient(90deg,#1b0d07,#d8b375 30%,#fff2c8 50%,#8b6031 74%,#160905);box-shadow:0 34px 70px rgba(0,0,0,.5);position:relative;transform:rotate(-6deg)}
-  .bottle::before{content:"";position:absolute;left:44px;right:44px;top:-70px;height:82px;border-radius:18px 18px 7px 7px;background:linear-gradient(90deg,#120805,#e3c88f,#4d2b14)}
-  .bottle::after{content:"Sunlit";position:absolute;left:22px;right:22px;top:160px;padding:21px 8px;background:rgba(244,235,221,.82);color:#170D08;text-align:center;font-family:'Fraunces',serif;font-size:25px;font-style:italic}
+  .regular-product-photo{width:auto;height:min(88%,520px);max-width:78%;object-fit:contain;filter:drop-shadow(0 34px 54px rgba(0,0,0,.52))}
   .eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light)}
   h1{font-size:clamp(40px,5vw,64px);line-height:1;color:var(--gold-light);margin:12px 0}
   .sub{color:rgba(244,235,221,.72);line-height:1.7;margin-bottom:20px}.price{font-family:'Fraunces',serif;color:var(--gold-light);font-size:30px;margin:0 0 24px}
@@ -34,7 +32,7 @@
 <nav class="topbar"><a class="logo" href="index.html">brown<b>sugar</b>babe</a><a class="back" href="index.html">Back to shop</a></nav>
 <main>
   <section class="grid">
-    <div class="image" aria-label="Sunlit product image"><div class="bottle"></div></div>
+    <div class="image" aria-label="Sunlit product image"><img class="regular-product-photo" src="assets/regular-product-bottle.png" alt="Brown Sugar Babe Sunlit body oil bottle"></div>
     <div>
       <span class="eyebrow">Nourishing Body Oil</span>
       <h1>Sunlit</h1>
