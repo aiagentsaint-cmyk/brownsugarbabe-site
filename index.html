@@ -401,6 +401,10 @@
     letter-spacing:.03em;
     text-transform:uppercase;
   }
+  .exclusive-split{
+    position:relative;
+    z-index:1;
+  }
 
   /* ===== EXCLUSIVE DROP ===== */
   .exclusive-section{
@@ -570,6 +574,87 @@
     color:var(--brown-deep);
     border-color:transparent;
     background:linear-gradient(135deg, var(--gold-light), var(--gold-deep));
+  }
+
+  @media (min-width: 721px){
+    .exclusive-split{
+      display:flex;
+      align-items:stretch;
+      width:100%;
+      min-height:620px;
+      background:var(--brown-bg);
+    }
+    .exclusive-split .exclusive-section{
+      order:1;
+      flex:0 0 50%;
+      width:50%;
+      min-height:620px;
+      padding:72px 42px 64px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
+    .exclusive-split .collection-photo{
+      order:2;
+      flex:0 0 50%;
+      width:50%;
+      height:auto;
+      min-height:620px;
+    }
+    .exclusive-split .collection-photo .label{
+      left:42px;
+      bottom:42px;
+    }
+    .exclusive-split .collection-photo .label.photo-note{
+      top:42px;
+      right:42px;
+      left:auto;
+      bottom:auto;
+    }
+    .exclusive-split .collection-photo .label h2{
+      font-size:clamp(36px,4.3vw,58px);
+    }
+    .exclusive-split .collection-photo .label.photo-note h2{
+      font-size:clamp(30px,3.4vw,46px);
+    }
+    .exclusive-split .exclusive-head{
+      max-width:520px;
+      margin-bottom:20px;
+    }
+    .exclusive-split .exclusive-head h2{
+      font-size:clamp(34px,4vw,54px);
+    }
+    .exclusive-split .exclusive-product{
+      width:100%;
+      max-width:560px;
+      left:auto;
+      transform:none;
+    }
+    .exclusive-product .p-image{
+      min-height:clamp(250px, 27vw, 360px);
+    }
+    .exclusive-product .p-image::before{
+      width:min(520px, 40vw);
+      height:min(172px, 15vw);
+      transform:translate(-50%,-50%);
+    }
+    .exclusive-product .p-image::after{
+      bottom:10%;
+      width:min(360px, 30vw);
+      height:13%;
+    }
+    .exclusive-product-photo{
+      top:42%;
+      height:57%;
+      max-width:56%;
+    }
+    .exclusive-product .p-card:hover .exclusive-product-photo{
+      transform:translate(-50%,-50%) scale(1.05);
+    }
+    .exclusive-product .p-info{
+      margin-top:-22px;
+      padding-top:0;
+    }
   }
 
   /* ===== INGREDIENT STRIP ===== */
@@ -957,27 +1042,29 @@
 <div class="content-sheet">
 
   <!-- EXCLUSIVE COLLECTION -->
-  <div class="collection-photo">
-    <div class="bg two"></div>
-    <div class="scrim"></div>
-    <div class="label"><span class="eyebrow">Exclusive</span><h2>French Kiss</h2></div>
-    <div class="label photo-note"><span class="eyebrow">Introducing</span><h2>Priv&eacute; Reserve</h2></div>
+  <div class="exclusive-split">
+    <div class="collection-photo">
+      <div class="bg two"></div>
+      <div class="scrim"></div>
+      <div class="label"><span class="eyebrow">Exclusive</span><h2>French Kiss</h2></div>
+      <div class="label photo-note"><span class="eyebrow">Introducing</span><h2>Priv&eacute; Reserve</h2></div>
+    </div>
+    <section id="collection-2" class="exclusive-section">
+      <div class="exclusive-head">
+        <span class="eyebrow">Inspired By</span>
+        <h2>Lost in Paris</h2>
+        <p class="exclusive-sub">A private-release body oil made for skin that enters the room first and lingers long after the last goodbye.</p>
+      </div>
+      <div class="exclusive-product">
+        <a class="product-link" href="french-kiss.html" aria-label="View French Kiss Priv&eacute; Reserve">
+          <div class="p-card">
+            <div class="p-image"><span class="p-badge">Exclusive</span><span class="sparkle-rain" aria-hidden="true"><i style="left:37%;animation-delay:.05s"></i><i style="left:44%;animation-delay:.34s"></i><i style="left:51%;animation-delay:.12s"></i><i style="left:58%;animation-delay:.52s"></i><i style="left:65%;animation-delay:.24s"></i></span><img class="exclusive-product-photo" src="assets/french-kiss-bottle-transparent.png" alt="Brown Sugar Babe French Kiss Priv&eacute; Reserve body oil"></div>
+            <div class="p-info"><h3>French Kiss</h3><div class="p-notes">Blood Orange, Brown Sugar, and Amber</div><div class="p-row"><span class="p-price">$110</span><span class="p-add">Unlock</span></div></div>
+          </div>
+        </a>
+      </div>
+    </section>
   </div>
-  <section id="collection-2" class="exclusive-section">
-    <div class="exclusive-head">
-      <span class="eyebrow">Inspired By</span>
-      <h2>Lost in Paris</h2>
-      <p class="exclusive-sub">A private-release body oil made for skin that enters the room first and lingers long after the last goodbye.</p>
-    </div>
-    <div class="exclusive-product">
-      <a class="product-link" href="french-kiss.html" aria-label="View French Kiss Priv&eacute; Reserve">
-        <div class="p-card">
-          <div class="p-image"><span class="p-badge">Exclusive</span><span class="sparkle-rain" aria-hidden="true"><i style="left:37%;animation-delay:.05s"></i><i style="left:44%;animation-delay:.34s"></i><i style="left:51%;animation-delay:.12s"></i><i style="left:58%;animation-delay:.52s"></i><i style="left:65%;animation-delay:.24s"></i></span><img class="exclusive-product-photo" src="assets/french-kiss-bottle-transparent.png" alt="Brown Sugar Babe French Kiss Priv&eacute; Reserve body oil"></div>
-          <div class="p-info"><h3>French Kiss</h3><div class="p-notes">Blood Orange, Brown Sugar, and Amber</div><div class="p-row"><span class="p-price">$110</span><span class="p-add">Unlock</span></div></div>
-        </div>
-      </a>
-    </div>
-  </section>
 
   <!-- FEATURED -->
   <section id="featured">
