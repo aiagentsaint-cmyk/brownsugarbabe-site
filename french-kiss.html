@@ -8,12 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-deep:#8C6B3E;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2);--ease:cubic-bezier(.22,.61,.36,1)}
+  body.theme-main{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-deep:#8C6B3E;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2)}
+  body.theme-cream{--deep:#EBD8C2;--brown:#F3E5D4;--panel:#FFF4E6;--gold:#D19A3D;--gold-deep:#A66B1F;--gold-light:#D19A3D;--cream:#24150E;--line:rgba(92,53,31,.18)}
+  body.theme-white{--deep:#FFFFFF;--brown:#F7F5F1;--panel:#EFE9DF;--gold:#D8A044;--gold-deep:#A66B1F;--gold-light:#D8A044;--cream:#19110D;--line:rgba(74,42,24,.16)}
   *{box-sizing:border-box;margin:0;padding:0}
   *{scrollbar-width:none;-ms-overflow-style:none}
   *::-webkit-scrollbar{width:0;height:0;display:none}
   html{scroll-behavior:smooth}
-  body{font-family:'Sora',sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;overflow-x:hidden}
+  body{font-family:'Sora',sans-serif;background:var(--deep);color:var(--cream);min-height:100vh;overflow-x:hidden;transition:background .35s,color .35s}
   body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(227,200,143,.18),transparent 44%),linear-gradient(180deg,rgba(23,13,8,.42),rgba(23,13,8,.92)),url('assets/french-kiss-banner.jpg') center/cover;opacity:.92}
+  body.theme-cream::before{background:radial-gradient(ellipse at 50% 0%,rgba(209,154,61,.22),transparent 44%),linear-gradient(180deg,rgba(243,229,212,.74),rgba(243,229,212,.96)),url('assets/french-kiss-banner.jpg') center/cover}
+  body.theme-white::before{background:radial-gradient(ellipse at 50% 0%,rgba(216,160,68,.18),transparent 44%),linear-gradient(180deg,rgba(255,255,255,.78),rgba(247,245,241,.97)),url('assets/french-kiss-banner.jpg') center/cover}
   h1,h2,h3,.display{font-family:'Fraunces',serif;font-weight:500}
   a{color:inherit;text-decoration:none}
   button,input{font-family:inherit}
@@ -75,16 +80,37 @@
   .reviews{display:grid;grid-template-columns:.7fr 1.3fr;gap:42px;align-items:start}
   .rating{font-family:'Fraunces',serif;color:var(--gold-light);font-size:70px;line-height:1}.stars{color:var(--gold-light);letter-spacing:.16em;margin:12px 0}
   .review-card{border:1px solid var(--line);background:rgba(23,13,8,.36);padding:30px}.review-card blockquote{font-family:'Fraunces',serif;font-size:28px;line-height:1.28;color:var(--cream)}.review-card cite{display:block;margin-top:18px;color:var(--gold-light);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-style:normal}
+  .theme-switcher{padding:10px 0 0;display:flex;align-items:center;justify-content:center;gap:12px}
+  .theme-toggle{min-width:112px;border:1px solid var(--line);background:var(--panel);color:var(--cream);border-radius:999px;padding:12px 18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s,transform .25s}
+  .theme-toggle:hover{transform:translateY(-1px);border-color:var(--gold)}
+  .theme-toggle.active{background:var(--gold);color:var(--deep);border-color:var(--gold)}
   .lock-overlay{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:22px;background:rgba(15,9,6,.62);backdrop-filter:blur(4px);transition:opacity .55s var(--ease),visibility .55s var(--ease)}
   body.unlocked .lock-overlay{opacity:0;visibility:hidden;pointer-events:none}
   .lock-card{width:min(430px,100%);text-align:center;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(227,200,143,.13),rgba(42,25,18,.96) 62%);padding:42px 30px;box-shadow:0 40px 100px rgba(0,0,0,.6)}
   .lock-icon{width:82px;height:66px;margin:0 auto 24px;border:2px solid var(--gold-light);border-radius:16px;position:relative;transition:transform .65s var(--ease)}.lock-icon::before{content:"";position:absolute;left:18px;right:18px;top:-34px;height:42px;border:2px solid var(--gold-light);border-bottom:0;border-radius:34px 34px 0 0;transform-origin:left bottom;transition:transform .65s var(--ease)}body.unlocking .lock-icon::before{transform:rotate(-28deg)}body.unlocking .lock-icon{transform:translateY(-4px)}
   .lock-card h2{font-size:34px;color:var(--gold-light);margin-bottom:12px}.lock-card p{color:rgba(244,235,221,.72);line-height:1.6;margin-bottom:20px;font-size:13px}
   .code-form{display:flex;gap:8px}.code-form input{flex:1;padding:14px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(23,13,8,.66);color:var(--cream);text-align:center;letter-spacing:.18em}.code-form button{padding:14px 20px;border:0;border-radius:999px;background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));color:#170D08;font-weight:600;text-transform:uppercase;letter-spacing:.12em}.error{min-height:18px;margin-top:12px;color:#f1b7a8;font-size:12px}
+  body.theme-cream .topbar,body.theme-white .topbar{background:rgba(255,248,238,.88)}
+  body.theme-white .topbar{background:rgba(255,255,255,.9)}
+  body.theme-cream .details,body.theme-white .details,body.theme-cream .note-card,body.theme-white .note-card,body.theme-cream details,body.theme-white details,body.theme-cream .lock-card,body.theme-white .lock-card{background:rgba(255,255,255,.42)}
+  body.theme-cream .media-stage,body.theme-white .media-stage{background:radial-gradient(circle at 50% 42%,rgba(209,154,61,.22),transparent 58%),rgba(255,255,255,.36)}
+  body.theme-cream .sub,body.theme-white .sub,body.theme-cream .copy p,body.theme-white .copy p,body.theme-cream details p,body.theme-white details p,body.theme-cream .note-body p,body.theme-white .note-body p,body.theme-cream .lock-card p,body.theme-white .lock-card p{color:rgba(36,21,14,.7)}
+  body.theme-white .sub,body.theme-white .copy p,body.theme-white details p,body.theme-white .note-body p,body.theme-white .lock-card p{color:rgba(25,17,13,.66)}
+  body.theme-cream .topbar,body.theme-white .topbar,body.theme-cream .product-grid,body.theme-white .product-grid,body.theme-cream .content-section:not(.reviews),body.theme-white .content-section:not(.reviews),body.theme-cream .theme-switcher,body.theme-white .theme-switcher,body.theme-cream .lock-overlay,body.theme-white .lock-overlay{color:#170D08}
+  body.theme-cream h1,body.theme-white h1,body.theme-cream h2:not(.reviews h2),body.theme-white h2:not(.reviews h2),body.theme-cream h3,body.theme-white h3,body.theme-cream .logo b,body.theme-white .logo b,body.theme-cream .back,body.theme-white .back,body.theme-cream .badge,body.theme-white .badge,body.theme-cream .reserve,body.theme-white .reserve,body.theme-cream .price,body.theme-white .price,body.theme-cream .perk,body.theme-white .perk,body.theme-cream .section-kicker,body.theme-white .section-kicker,body.theme-cream summary,body.theme-white summary,body.theme-cream .media-badge,body.theme-white .media-badge,body.theme-cream .gallery-card,body.theme-white .gallery-card,body.theme-cream .lock-card h2,body.theme-white .lock-card h2{color:#170D08}
+  body.theme-cream .sizes button,body.theme-white .sizes button,body.theme-cream .code-form input,body.theme-white .code-form input{background:rgba(255,255,255,.52);color:var(--cream)}
+  body.theme-cream .sizes button,body.theme-white .sizes button,body.theme-cream .code-form input,body.theme-white .code-form input{color:#170D08}
+  body.theme-cream .theme-toggle.active,body.theme-white .theme-toggle.active{color:#170D08}
+  body.theme-cream .media-arrow,body.theme-white .media-arrow{color:#170D08}
+  body.theme-cream .reviews,body.theme-white .reviews{color:#F4EBDD}
+  body.theme-cream .reviews .section-kicker,body.theme-white .reviews .section-kicker,body.theme-cream .reviews .rating,body.theme-white .reviews .rating,body.theme-cream .reviews .stars,body.theme-white .reviews .stars,body.theme-cream .review-card cite,body.theme-white .review-card cite{color:#E3C88F}
+  body.theme-cream .reviews .sub,body.theme-white .reviews .sub{color:rgba(244,235,221,.72)}
+  body.theme-cream .review-card,body.theme-white .review-card{background:rgba(23,13,8,.36);border-color:rgba(227,200,143,.2)}
+  body.theme-cream .review-card blockquote,body.theme-white .review-card blockquote{color:#F4EBDD}
   @media(max-width:900px){.topbar{padding:18px 20px}.page-shell{padding:94px 20px 54px}.product-grid{grid-template-columns:1fr;gap:22px}.media-column{display:block;overflow:visible}.media-stage{width:100%;min-height:520px}.gallery-strip{display:none}.details{position:relative;top:0;padding:26px}.split,.reviews,.pyramid{grid-template-columns:1fr}.sizes,.perks{grid-template-columns:1fr}.content-section{margin-top:46px}.note-card{min-height:0}}
 </style>
 </head>
-<body class="locked">
+<body class="locked theme-main">
 <nav class="topbar"><a class="logo" href="index.html">brown<b>sugar</b>babe</a><a class="back" href="index.html">Back to shop</a></nav>
 <main class="page-shell">
   <section class="product-grid">
@@ -158,6 +184,11 @@
       <cite>Bree &middot; Verified Private Client</cite>
     </div>
   </section>
+  <div class="theme-switcher" aria-label="Website color choices">
+    <button class="theme-toggle" type="button" data-theme-choice="main">Main</button>
+    <button class="theme-toggle" type="button" data-theme-choice="cream">Cream</button>
+    <button class="theme-toggle" type="button" data-theme-choice="white">White</button>
+  </div>
 </main>
 <div class="lock-overlay" role="dialog" aria-modal="true" aria-labelledby="lockTitle">
   <div class="lock-card">
@@ -180,6 +211,23 @@
   const prevMedia = document.querySelector('.media-arrow.prev');
   const nextMedia = document.querySelector('.media-arrow.next');
   let activeMediaIndex = 0;
+  (function(){
+    const themeButtons = document.querySelectorAll('[data-theme-choice]');
+    const savedTheme = localStorage.getItem('bsb_site_theme') || 'main';
+    function applyTheme(theme){
+      document.body.classList.toggle('theme-main', theme === 'main');
+      document.body.classList.toggle('theme-cream', theme === 'cream');
+      document.body.classList.toggle('theme-white', theme === 'white');
+      themeButtons.forEach(function(btn){
+        const active = btn.dataset.themeChoice === theme;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      localStorage.setItem('bsb_site_theme', theme);
+    }
+    themeButtons.forEach(function(btn){ btn.addEventListener('click', function(){ applyTheme(btn.dataset.themeChoice); }); });
+    applyTheme(['main','cream','white'].includes(savedTheme) ? savedTheme : 'main');
+  })();
   function selectMedia(index){
     if(!galleryButtons.length) return;
     activeMediaIndex = (index + galleryButtons.length) % galleryButtons.length;

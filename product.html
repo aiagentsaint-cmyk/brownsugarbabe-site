@@ -7,9 +7,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Sora:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2)}
+  :root{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-deep:#8C6B3E;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2)}
+  body.theme-main{--deep:#170D08;--brown:#2A1912;--panel:#331F16;--gold:#B8935B;--gold-deep:#8C6B3E;--gold-light:#E3C88F;--cream:#F4EBDD;--line:rgba(227,200,143,.2)}
+  body.theme-cream{--deep:#EBD8C2;--brown:#F3E5D4;--panel:#FFF4E6;--gold:#D19A3D;--gold-deep:#A66B1F;--gold-light:#D19A3D;--cream:#24150E;--line:rgba(92,53,31,.18)}
+  body.theme-white{--deep:#FFFFFF;--brown:#F7F5F1;--panel:#EFE9DF;--gold:#D8A044;--gold-deep:#A66B1F;--gold-light:#D8A044;--cream:#19110D;--line:rgba(74,42,24,.16)}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Sora',sans-serif;background:var(--brown);color:var(--cream);min-height:100vh}
+  body{font-family:'Sora',sans-serif;background:var(--brown);color:var(--cream);min-height:100vh;transition:background .35s,color .35s}
   body::before{content:"";position:fixed;inset:0;background:radial-gradient(ellipse at 45% 0%,rgba(227,200,143,.14),transparent 46%),linear-gradient(180deg,var(--deep),var(--brown));z-index:-1}
   h1,h2,h3{font-family:'Fraunces',serif;font-weight:500}a{color:inherit;text-decoration:none}
   .topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:22px 38px;background:rgba(23,13,8,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -25,10 +28,23 @@
   .promise{margin:22px 0;color:var(--gold-light);font-family:'Fraunces',serif;font-style:italic;font-size:22px}
   .notes{max-width:1160px;margin:64px auto 0;display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.note{padding:24px;border:1px solid var(--line);background:rgba(23,13,8,.28)}.note h3{color:var(--gold-light);font-size:24px;margin:8px 0}.note p{color:rgba(244,235,221,.7);font-size:13px;line-height:1.7}
   .care{max-width:1160px;margin:24px auto 0;padding-top:24px;border-top:1px solid var(--line);color:rgba(244,235,221,.72);line-height:1.7;font-size:13px}
+  .theme-switcher{padding:36px 38px 28px;display:flex;align-items:center;justify-content:center;gap:12px;background:var(--brown)}
+  .theme-toggle{min-width:112px;border:1px solid var(--line);background:var(--panel);color:var(--cream);border-radius:999px;padding:12px 18px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;transition:background .25s,color .25s,border-color .25s,transform .25s}
+  .theme-toggle:hover{transform:translateY(-1px);border-color:var(--gold)}
+  .theme-toggle.active{background:var(--gold);color:var(--deep);border-color:var(--gold)}
+  body.theme-cream .topbar,body.theme-white .topbar{background:rgba(255,248,238,.88)}
+  body.theme-white .topbar{background:rgba(255,255,255,.9)}
+  body.theme-cream .sub,body.theme-white .sub,body.theme-cream .care,body.theme-white .care,body.theme-cream .note p,body.theme-white .note p{color:rgba(36,21,14,.7)}
+  body.theme-white .sub,body.theme-white .care,body.theme-white .note p{color:rgba(25,17,13,.66)}
+  body.theme-cream h1,body.theme-white h1,body.theme-cream h2,body.theme-white h2,body.theme-cream h3,body.theme-white h3,body.theme-cream .eyebrow,body.theme-white .eyebrow,body.theme-cream .price,body.theme-white .price,body.theme-cream .promise,body.theme-white .promise,body.theme-cream .logo b,body.theme-white .logo b,body.theme-cream .back,body.theme-white .back{color:#170D08}
+  body.theme-cream .sizes button,body.theme-white .sizes button{color:#170D08;background:rgba(255,255,255,.52)}
+  body.theme-cream .theme-toggle.active,body.theme-white .theme-toggle.active{color:#170D08}
+  body.theme-cream .note,body.theme-white .note{background:rgba(255,255,255,.38)}
+  body.theme-cream .image::before,body.theme-white .image::before{opacity:.08}
   @media(max-width:800px){.topbar{padding:18px 20px}main{padding:40px 20px 54px}.grid,.notes{grid-template-columns:1fr}.image{min-height:480px}}
 </style>
 </head>
-<body>
+<body class="theme-main">
 <nav class="topbar"><a class="logo" href="index.html">brown<b>sugar</b>babe</a><a class="back" href="index.html">Back to shop</a></nav>
 <main>
   <section class="grid">
@@ -55,5 +71,29 @@
     <p><strong>How to use:</strong> Apply after showering or bathing, then focus on pulse points like the neck, collarbone, inside elbows, ankles, and behind the knees.</p>
   </section>
 </main>
+<div class="theme-switcher" aria-label="Website color choices">
+  <button class="theme-toggle" type="button" data-theme-choice="main">Main</button>
+  <button class="theme-toggle" type="button" data-theme-choice="cream">Cream</button>
+  <button class="theme-toggle" type="button" data-theme-choice="white">White</button>
+</div>
+<script>
+  (function(){
+    const themeButtons = document.querySelectorAll('[data-theme-choice]');
+    const savedTheme = localStorage.getItem('bsb_site_theme') || 'main';
+    function applyTheme(theme){
+      document.body.classList.toggle('theme-main', theme === 'main');
+      document.body.classList.toggle('theme-cream', theme === 'cream');
+      document.body.classList.toggle('theme-white', theme === 'white');
+      themeButtons.forEach(function(btn){
+        const active = btn.dataset.themeChoice === theme;
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      });
+      localStorage.setItem('bsb_site_theme', theme);
+    }
+    themeButtons.forEach(function(btn){ btn.addEventListener('click', function(){ applyTheme(btn.dataset.themeChoice); }); });
+    applyTheme(['main','cream','white'].includes(savedTheme) ? savedTheme : 'main');
+  })();
+</script>
 </body>
 </html>
